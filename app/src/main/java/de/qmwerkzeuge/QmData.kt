@@ -1,6 +1,7 @@
 package de.qmwerkzeuge
 
 data class Tool(
+    val id: String,
     val name: String,
     val kind: String,
     val desc: String,
@@ -24,6 +25,7 @@ val categories: List<Category> = listOf(
         sub = "Fehler und Daten auswerten",
         tools = listOf(
             Tool(
+                id = "fehlersammelliste",
                 name = "Fehlersammelliste",
                 kind = "Liste",
                 desc = "Eine einfache Strichliste: Jeder Fehler wird bei seiner Fehlerart abgehakt. So sieht man schnell, welche Fehler wie oft vorkommen.",
@@ -31,6 +33,7 @@ val categories: List<Category> = listOf(
                 image = R.drawable.ex_fehlersammelliste,
             ),
             Tool(
+                id = "histogramm",
                 name = "Histogramm",
                 kind = "Diagramm",
                 desc = "Ein Säulendiagramm, das zeigt, wie oft Messwerte in bestimmten Bereichen liegen. Man erkennt, ob die Werte eng beieinander liegen, stark streuen oder ob es Ausreißer gibt.",
@@ -38,6 +41,7 @@ val categories: List<Category> = listOf(
                 image = R.drawable.ex_histogramm,
             ),
             Tool(
+                id = "regelkarte",
                 name = "Qualitätsregelkarte",
                 kind = "Diagramm",
                 desc = "Messwerte werden der Reihe nach in ein Diagramm mit oberer und unterer Grenze eingetragen. Liegt ein Wert außerhalb oder zeigt sich ein Trend, muss man eingreifen.",
@@ -45,6 +49,7 @@ val categories: List<Category> = listOf(
                 image = R.drawable.ex_regelkarte,
             ),
             Tool(
+                id = "pareto",
                 name = "Pareto-Diagramm",
                 kind = "Diagramm",
                 desc = "Die Ursachen werden als Balken nach Häufigkeit sortiert. Meist verursachen wenige Ursachen den Großteil der Probleme (80/20-Regel).",
@@ -52,6 +57,7 @@ val categories: List<Category> = listOf(
                 image = R.drawable.ex_pareto,
             ),
             Tool(
+                id = "korrelation",
                 name = "Korrelationsdiagramm",
                 kind = "Diagramm",
                 desc = "Zwei Größen werden als Punkte gegeneinander eingetragen, z. B. Temperatur und Ausschuss. Bilden die Punkte eine Linie, hängen die Größen vermutlich zusammen.",
@@ -59,6 +65,7 @@ val categories: List<Category> = listOf(
                 image = R.drawable.ex_korrelation,
             ),
             Tool(
+                id = "ishikawa",
                 name = "Ishikawa-Diagramm",
                 kind = "Vorlage",
                 desc = "Ein Diagramm in Form einer Fischgräte: Am Kopf steht das Problem, an den Gräten die möglichen Ursachen, sortiert nach Mensch, Maschine, Material, Methode, Milieu (Umwelt) und Messung.",
@@ -66,6 +73,7 @@ val categories: List<Category> = listOf(
                 image = R.drawable.ex_ishikawa,
             ),
             Tool(
+                id = "flussdiagramm",
                 name = "Flussdiagramm",
                 kind = "Vorlage",
                 desc = "Zeigt einen Ablauf Schritt für Schritt mit Kästchen und Pfeilen, inklusive Entscheidungen (ja/nein). So wird sichtbar, wie ein Prozess wirklich läuft.",
@@ -81,6 +89,7 @@ val categories: List<Category> = listOf(
         sub = "Planen und strukturieren",
         tools = listOf(
             Tool(
+                id = "affinitaet",
                 name = "Affinitätsdiagramm",
                 kind = "Vorlage",
                 desc = "Viele lose Ideen oder Aussagen werden auf Karten geschrieben und nach Themen gruppiert. Aus dem Durcheinander entstehen klare Oberbegriffe.",
@@ -88,6 +97,7 @@ val categories: List<Category> = listOf(
                 image = R.drawable.ex_affinitaet,
             ),
             Tool(
+                id = "relationen",
                 name = "Relationendiagramm",
                 kind = "Diagramm",
                 desc = "Mehrere Faktoren werden mit Pfeilen verbunden, die zeigen, was was beeinflusst. Faktoren mit vielen ausgehenden Pfeilen sind wahrscheinlich Hauptursachen.",
@@ -95,6 +105,7 @@ val categories: List<Category> = listOf(
                 image = R.drawable.ex_relationen,
             ),
             Tool(
+                id = "baum",
                 name = "Baumdiagramm",
                 kind = "Vorlage",
                 desc = "Ein Ziel wird wie ein Baum in immer kleinere Teilziele und schließlich in konkrete Maßnahmen aufgeteilt.",
@@ -102,6 +113,7 @@ val categories: List<Category> = listOf(
                 image = R.drawable.ex_baum,
             ),
             Tool(
+                id = "matrix",
                 name = "Matrixdiagramm",
                 kind = "Tabelle",
                 desc = "Eine Tabelle, die zwei Gruppen gegenüberstellt, z. B. Kundenwünsche und Maßnahmen. In den Feldern wird markiert, wie stark sie zusammenhängen.",
@@ -109,6 +121,7 @@ val categories: List<Category> = listOf(
                 image = R.drawable.ex_matrix,
             ),
             Tool(
+                id = "portfolio",
                 name = "Portfolio (Matrix-Datenanalyse)",
                 kind = "Diagramm",
                 desc = "Optionen werden nach zwei Kriterien, z. B. Aufwand und Nutzen, in ein Raster mit vier Feldern eingeordnet. So sieht man auf einen Blick, was sich lohnt.",
@@ -116,6 +129,7 @@ val categories: List<Category> = listOf(
                 image = R.drawable.ex_portfolio,
             ),
             Tool(
+                id = "netzplan",
                 name = "Netzplan",
                 kind = "Diagramm",
                 desc = "Zeigt alle Arbeitsschritte eines Projekts mit Dauer und Abhängigkeiten. Daraus ergibt sich der kritische Pfad: die Schritte, die das Projektende bestimmen.",
@@ -123,6 +137,7 @@ val categories: List<Category> = listOf(
                 image = R.drawable.ex_netzplan,
             ),
             Tool(
+                id = "pdpc",
                 name = "Problem-Entscheidungs-Plan (PDPC)",
                 kind = "Vorlage",
                 desc = "Für jeden Schritt eines Plans wird überlegt, was schiefgehen kann und wie man dann reagiert. So liegen Gegenmaßnahmen schon vorher bereit.",
@@ -138,6 +153,7 @@ val categories: List<Category> = listOf(
         sub = "Ursachen finden, besser werden",
         tools = listOf(
             Tool(
+                id = "pdca",
                 name = "PDCA-Zyklus",
                 kind = "Methode",
                 desc = "Ein Kreislauf aus vier Schritten: Planen, Umsetzen, Überprüfen, Handeln. Hat die Lösung funktioniert, wird sie zum Standard, sonst beginnt der Kreis von vorn.",
@@ -145,6 +161,7 @@ val categories: List<Category> = listOf(
                 image = R.drawable.ex_pdca,
             ),
             Tool(
+                id = "5why",
                 name = "5-Why-Methode",
                 kind = "Vorlage",
                 desc = "Man fragt so lange „Warum?“, meist etwa fünfmal, bis man von der sichtbaren Störung zur eigentlichen Ursache kommt.",
@@ -152,6 +169,7 @@ val categories: List<Category> = listOf(
                 image = R.drawable.ex_5why,
             ),
             Tool(
+                id = "8d",
                 name = "8D-Report",
                 kind = "Vorlage",
                 desc = "Ein Bericht in acht Schritten: vom Bilden eines Teams über Sofortmaßnahmen und Ursachenanalyse bis zur dauerhaften Abstellung. In vielen Branchen der Standard bei Reklamationen.",
@@ -159,6 +177,7 @@ val categories: List<Category> = listOf(
                 image = R.drawable.ex_8d,
             ),
             Tool(
+                id = "a3",
                 name = "A3-Report",
                 kind = "Vorlage",
                 desc = "Das ganze Problem auf einer DIN-A3-Seite: Ausgangslage, Ziel, Ursachen, Maßnahmen und Ergebnis. Zwingt dazu, kurz und klar zu bleiben.",
@@ -166,6 +185,7 @@ val categories: List<Category> = listOf(
                 image = R.drawable.ex_a3,
             ),
             Tool(
+                id = "kvp",
                 name = "KVP / Kaizen",
                 kind = "Methode",
                 desc = "Statt großer Umbrüche wird ständig in kleinen Schritten verbessert. Alle Mitarbeitenden bringen dazu ihre Ideen ein.",
@@ -173,6 +193,7 @@ val categories: List<Category> = listOf(
                 image = R.drawable.ex_kvp,
             ),
             Tool(
+                id = "dmaic",
                 name = "Six Sigma (DMAIC)",
                 kind = "Methode",
                 desc = "Ein Projektvorgehen in fünf Phasen: Definieren, Messen, Analysieren, Verbessern, Steuern. Ziel ist, Fehler mit Daten und Statistik stark zu verringern.",
@@ -188,6 +209,7 @@ val categories: List<Category> = listOf(
         sub = "Fehler vermeiden, bevor sie entstehen",
         tools = listOf(
             Tool(
+                id = "fmea",
                 name = "FMEA",
                 kind = "Tabelle",
                 desc = "Für jeden möglichen Fehler wird bewertet, wie schwer die Folgen sind, wie oft er auftritt und wie gut man ihn entdeckt. Die größten Risiken bekommen zuerst Maßnahmen.",
@@ -195,6 +217,7 @@ val categories: List<Category> = listOf(
                 image = R.drawable.ex_fmea,
             ),
             Tool(
+                id = "qfd",
                 name = "QFD / House of Quality",
                 kind = "Tabelle",
                 desc = "Kundenwünsche werden in einer großen Matrix in messbare technische Merkmale übersetzt. Die Form erinnert an ein Haus, daher der Name.",
@@ -202,6 +225,7 @@ val categories: List<Category> = listOf(
                 image = R.drawable.ex_qfd,
             ),
             Tool(
+                id = "kano",
                 name = "Kano-Modell",
                 kind = "Diagramm",
                 desc = "Teilt Kundenanforderungen in drei Gruppen: Basismerkmale werden erwartet, Leistungsmerkmale steigern die Zufriedenheit, Begeisterungsmerkmale überraschen positiv.",
@@ -209,6 +233,7 @@ val categories: List<Category> = listOf(
                 image = R.drawable.ex_kano,
             ),
             Tool(
+                id = "pokayoke",
                 name = "Poka Yoke",
                 kind = "Methode",
                 desc = "Japanisch für „Fehler vermeiden“. Ein Teil oder Ablauf wird so gestaltet, dass man ihn gar nicht falsch machen kann, z. B. ein Stecker, der nur in eine Richtung passt.",
@@ -216,6 +241,7 @@ val categories: List<Category> = listOf(
                 image = R.drawable.ex_pokayoke,
             ),
             Tool(
+                id = "doe",
                 name = "Statistische Versuchsplanung (DoE)",
                 kind = "Methode",
                 desc = "Mit gezielt geplanten Versuchen findet man heraus, welche Einstellungen das Ergebnis wie stark beeinflussen, und das mit möglichst wenigen Versuchen.",
@@ -231,6 +257,7 @@ val categories: List<Category> = listOf(
         sub = "Prozesse messen und absichern",
         tools = listOf(
             Tool(
+                id = "cpk",
                 name = "SPC und Prozessfähigkeit (Cp/Cpk)",
                 kind = "Rechner",
                 desc = "Zeigt, ob ein Prozess die Toleranz sicher einhält. Cp bewertet die Streuung, Cpk zusätzlich, ob der Prozess mittig liegt. Werte ab 1,33 gelten meist als gut.",
@@ -238,6 +265,7 @@ val categories: List<Category> = listOf(
                 image = R.drawable.ex_cpk,
             ),
             Tool(
+                id = "msa",
                 name = "Messsystemanalyse (MSA)",
                 kind = "Rechner",
                 desc = "Prüft, ob ein Messgerät genau und wiederholbar misst und ob verschiedene Prüfer zum gleichen Ergebnis kommen. Nur dann kann man den Messwerten trauen.",
@@ -245,6 +273,7 @@ val categories: List<Category> = listOf(
                 image = R.drawable.ex_msa,
             ),
             Tool(
+                id = "5s",
                 name = "5S",
                 kind = "Checkliste",
                 desc = "Fünf Schritte für einen ordentlichen Arbeitsplatz: Sortieren, Systematisieren, Säubern, Standardisieren, Selbstdisziplin.",
@@ -252,6 +281,7 @@ val categories: List<Category> = listOf(
                 image = R.drawable.ex_5s,
             ),
             Tool(
+                id = "sipoc",
                 name = "SIPOC",
                 kind = "Vorlage",
                 desc = "Ein grober Überblick über einen Prozess in fünf Spalten: Lieferanten, Eingaben, Prozessschritte, Ergebnisse und Kunden.",
@@ -259,6 +289,7 @@ val categories: List<Category> = listOf(
                 image = R.drawable.ex_sipoc,
             ),
             Tool(
+                id = "wertstrom",
                 name = "Wertstromanalyse",
                 kind = "Diagramm",
                 desc = "Zeichnet den Weg eines Produkts durch die ganze Fertigung auf, mit Material- und Informationsfluss. So werden Wartezeiten, Lager und Verschwendung sichtbar.",
@@ -266,6 +297,7 @@ val categories: List<Category> = listOf(
                 image = R.drawable.ex_wertstrom,
             ),
             Tool(
+                id = "audit",
                 name = "Audit (z. B. ISO 9001)",
                 kind = "Checkliste",
                 desc = "Eine geplante Prüfung, ob Abläufe so gelebt werden wie festgelegt und ob sie die Anforderungen erfüllen, z. B. die der ISO 9001.",
@@ -273,6 +305,7 @@ val categories: List<Category> = listOf(
                 image = R.drawable.ex_audit,
             ),
             Tool(
+                id = "kpi",
                 name = "Kennzahlen (KPIs)",
                 kind = "Rechner",
                 desc = "Kennzahlen machen Ziele messbar, z. B. Ausschussquote oder Liefertreue. Sie zeigen, ob man auf Kurs ist.",
@@ -280,6 +313,7 @@ val categories: List<Category> = listOf(
                 image = R.drawable.ex_kpi,
             ),
             Tool(
+                id = "benchmarking",
                 name = "Benchmarking",
                 kind = "Methode",
                 desc = "Man vergleicht die eigenen Abläufe oder Ergebnisse mit den Besten, im eigenen Unternehmen oder in anderen Firmen, und lernt daraus.",

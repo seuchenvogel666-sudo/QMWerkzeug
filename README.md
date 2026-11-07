@@ -1,4 +1,4 @@
-# QM-Werkzeuge (Android-App, Version 0.1.0)
+# QM-Werkzeuge (Android-App, Version 0.2.0)
 
 Nachschlage-App für 33 Werkzeuge des Qualitätsmanagements, sortiert in 5 Kategorien:
 Q7, M7, Problemlösung und Verbesserung, Vorbeugen und Planen, Messen, Organisation und Prüfung.
@@ -6,6 +6,10 @@ Q7, M7, Problemlösung und Verbesserung, Vorbeugen und Planen, Messen, Organisat
 - Kategorien und Werkzeuge lassen sich auf- und zuklappen
 - Suche nach Namen und Beschreibung
 - Zu jedem Werkzeug eine kurze Beschreibung, „Wann einsetzen?“ und ein Beispielbild (zoombar)
+- Zu jedem Werkzeug eine Vorlage zum Ausfüllen in der App (Eingaben bleiben gespeichert)
+- Ausgefüllte Vorlage als PDF speichern
+- Leere Vorlage als PDF-Formular mit Eingabefeldern speichern (ausfüllbar in jedem PDF-Programm)
+- Start mit allen Karten eingeklappt
 
 ## APK über GitHub bauen
 
@@ -25,4 +29,4 @@ Manuell starten: Actions → „APK bauen“ → „Run workflow“.
 
 ## Technik
 
-Kotlin, Jetpack Compose (Material 3), minSdk 26 (Android 8.0), targetSdk 35.
+Kotlin, Jetpack Compose (Material 3), PDFBox-Android für die PDFs, minSdk 26 (Android 8.0), targetSdk 35.

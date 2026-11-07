@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import com.tom_roush.pdfbox.android.PDFBoxResourceLoader
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
@@ -92,6 +93,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+        PDFBoxResourceLoader.init(applicationContext)
         setContent {
             MaterialTheme(
                 colorScheme = lightColorScheme(
@@ -111,9 +113,15 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun QmApp() {
     var query by rememberSaveable { mutableStateOf("") }
-    val openCats = remember { mutableStateMapOf("q7" to true) }
+    val openCats = remember { mutableStateMapOf<String, Boolean>() }
     val openItems = remember { mutableStateMapOf<String, Boolean>() }
     var example by remember { mutableStateOf<Tool?>(null) }
+    var formTool by remember { mutableStateOf<Tool?>(null) }
+
+    formTool?.let { tool ->
+        TemplateScreen(tool = tool, onBack = { formTool = null })
+        return
+    }
 
     val q = query.trim().lowercase()
     val filtered = categories.mapNotNull { cat ->
@@ -179,6 +187,7 @@ fun QmApp() {
                     },
                     openItems = openItems,
                     onExample = { example = it },
+                    onTemplate = { formTool = it },
                 )
             }
         }
@@ -258,6 +267,7 @@ private fun CategoryCard(
     onToggle: () -> Unit,
     openItems: SnapshotStateMap<String, Boolean>,
     onExample: (Tool) -> Unit,
+    onTemplate: (Tool) -> Unit,
 ) {
     Card(
         shape = RoundedCornerShape(18.dp),
@@ -304,6 +314,7 @@ private fun CategoryCard(
                             open = openItems[key] == true,
                             onToggle = { openItems[key] = openItems[key] != true },
                             onExample = { onExample(tool) },
+                            onTemplate = { onTemplate(tool) },
                         )
                         HorizontalDivider(color = LineSoft)
                     }
@@ -319,6 +330,7 @@ private fun ToolRow(
     open: Boolean,
     onToggle: () -> Unit,
     onExample: () -> Unit,
+    onTemplate: () -> Unit,
 ) {
     Column {
         Row(
@@ -380,6 +392,15 @@ private fun ToolRow(
                     colors = ButtonDefaults.buttonColors(containerColor = BrandSoft, contentColor = Brand),
                 ) {
                     Text("Beispiel ansehen", fontSize = 15.sp, fontWeight = FontWeight.SemiBold)
+                }
+                Button(
+                    onClick = onTemplate,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .heightIn(min = 48.dp),
+                    shape = RoundedCornerShape(12.dp),
+                ) {
+                    Text("Vorlage ausfüllen", fontSize = 15.sp, fontWeight = FontWeight.SemiBold)
                 }
             }
         }
