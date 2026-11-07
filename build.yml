@@ -1,0 +1,48 @@
+name: APK bauen
+
+on:
+  push:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Code holen
+        uses: actions/checkout@v4
+
+      - name: Java 17 einrichten
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Gradle einrichten
+        uses: gradle/actions/setup-gradle@v4
+
+      - name: APK bauen
+        run: |
+          chmod +x gradlew
+          ./gradlew assembleDebug --no-daemon --stacktrace
+
+      - name: APK umbenennen
+        run: cp app/build/outputs/apk/debug/app-debug.apk QM-Werkzeuge.apk
+
+      - name: APK als Artefakt speichern
+        uses: actions/upload-artifact@v4
+        with:
+          name: QM-Werkzeuge-APK
+          path: QM-Werkzeuge.apk
+
+      - name: APK als Release veröffentlichen
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: build-${{ github.run_number }}
+          name: QM-Werkzeuge Build ${{ github.run_number }}
+          body: Automatisch gebaute APK. Datei aufs Handy laden und installieren.
+          files: QM-Werkzeuge.apk
